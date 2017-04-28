@@ -1,26 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'blog/base.html' %}
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Kupa</title>
-    </head>
-
-    <body>
-        <div>
-            <h1><b>Hejka wszystkim :D </b></h1>
+{% block content %}
+    {% for post in posts %}
+    <div class="post">
+        <div class="date">
+            {{ post.publisched_date }}
         </div>
-
-        <p>Hej!</p>
-
-        <br>
-
-        {% for post in posts %}
-        <div>
-            <p>Data publikacj: {{ post.publisched_date }}</p>
-            <h1>{{ post.title }}</h1>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </div>
-        {% endfor %}
-    </body>
-</html>
+        <h1><a href="">{{ post.title }}</a></h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+    {% endfor %}
+{% endblock content %}
